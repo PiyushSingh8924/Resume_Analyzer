@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Analysis Result</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Resume Analysis Result</h1>
+
+    <div class="card">
+
+        <h2>ATS Score</h2>
+
+        <div class="score">
+
+            {{ score }}%
+
+        </div>
+
+        {% if score >= 80 %}
+            <h3 class="good">
+                Excellent Match 
+            </h3>
+
+        {% elif score >= 60 %}
+            <h3 class="average">
+                Good Match 
+            </h3>
+
+        {% else %}
+            <h3 class="bad">
+                Needs Improvement 
+            </h3>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

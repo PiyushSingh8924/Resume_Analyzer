@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Smart Resume Analyzer</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📄 Smart Resume Analyzer</h1>
+
+    <p>
+        Upload your resume and compare it with a job description.
+    </p>
+
+    <form action="/analyze"
+          method="POST"
+          enctype="multipart/form-data">
+
+        <label>Upload Resume</label>
+
+        <input type="file"
+               name="resume"
+               required>
+
+        <label>Job Description</label>
+
+        <textarea
+            name="job_description"
+            placeholder="Paste Job Description Here..."
+            required>
+        </textarea>
+
+        <button>
+            Analyze Resume
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
