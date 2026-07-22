@@ -21,34 +21,67 @@
 
 <div class="container">
 
-    <h1>Resume Analysis Result</h1>
+    <h1>📊 Resume Analysis Result</h1>
+
+    <p>
+        Here is your ATS compatibility score.
+    </p>
 
     <div class="card">
 
         <h2>ATS Score</h2>
 
-        <div class="score">
+        <div class="circle">
 
-            {{ score }}%
+            <div class="score">
+
+                {{ score }}%
+
+            </div>
 
         </div>
 
         {% if score >= 80 %}
+
             <h3 class="good">
-                Excellent Match 
+                ✅ Excellent Match
             </h3>
+
+            <p>
+                Your resume aligns very well with the job description.
+            </p>
 
         {% elif score >= 60 %}
+
             <h3 class="average">
-                Good Match 
+                ⚡ Good Match
             </h3>
+
+            <p>
+                Your resume matches many requirements but can be improved.
+            </p>
 
         {% else %}
+
             <h3 class="bad">
-                Needs Improvement 
+                ❌ Needs Improvement
             </h3>
 
+            <p>
+                Consider adding more relevant skills and keywords.
+            </p>
+
         {% endif %}
+
+        <a href="/">
+
+            <button class="back-btn">
+
+                Analyze Another Resume
+
+            </button>
+
+        </a>
 
     </div>
 

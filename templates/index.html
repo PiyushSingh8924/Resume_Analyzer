@@ -18,39 +18,51 @@
 
 <body>
 
-<div class="container">
+    <div class="background-circle one"></div>
+    <div class="background-circle two"></div>
 
-    <h1>📄 Smart Resume Analyzer</h1>
+    <div class="container">
 
-    <p>
-        Upload your resume and compare it with a job description.
-    </p>
+        <div class="hero">
 
-    <form action="/analyze"
-          method="POST"
-          enctype="multipart/form-data">
+            <h1> AI Resume Analyzer</h1>
 
-        <label>Upload Resume</label>
+            <p>
+                Optimize your resume for ATS systems and compare it with job descriptions.
+            </p>
 
-        <input type="file"
-               name="resume"
-               required>
+        </div>
 
-        <label>Job Description</label>
+        <form action="/analyze"
+              method="POST"
+              enctype="multipart/form-data">
 
-        <textarea
-            name="job_description"
-            placeholder="Paste Job Description Here..."
-            required>
-        </textarea>
+            <div class="upload-box">
 
-        <button>
-            Analyze Resume
-        </button>
+                <label>Upload Resume</label>
 
-    </form>
+                <input
+                    type="file"
+                    name="resume"
+                    required>
 
-</div>
+            </div>
+
+            <label>Job Description</label>
+
+            <textarea
+                name="job_description"
+                placeholder="Paste Job Description Here..."
+                required>
+            </textarea>
+
+            <button>
+                Analyze Resume
+            </button>
+
+        </form>
+
+    </div>
 
 </body>
 </html>
