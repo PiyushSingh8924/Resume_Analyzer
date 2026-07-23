@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request
 import os
+
 from utils.resume_parser import extract_text
 from utils.nlp_utils import preprocess
 from utils.scorer import calculate_score
+from utils.info_extractor import extract_info
+from utils.skill_extractor import extract_skills
 
 app = Flask(__name__)
 
@@ -29,10 +32,22 @@ def analyze():
 
     text = extract_text(filepath)
 
+    print("\nResume Text:\n")
+    print(text)
+
+    candidate_info = extract_info(text)
+
+    print(candidate_info)
+
     job_description = request.form["job_description"]
 
-    clean_resume = preprocess(text)
+    resume_skills = extract_skills(text)
+    job_skills = extract_skills(job_description)
 
+    print("Resume Skills:", resume_skills)
+    print("Job Skills:", job_skills)
+
+    clean_resume = preprocess(text)
     clean_job = preprocess(job_description)
 
     score = calculate_score(
@@ -41,8 +56,13 @@ def analyze():
     )
 
     return render_template(
-    "result.html",
-    score=score
-)
+        "result.html",
+        score=score,
+        candidate_info=candidate_info,
+        resume_skills=resume_skills,
+        job_skills=job_skills
+    )
+
+
 if __name__ == "__main__":
-    app.run(debug=True,port=5001)
+    app.run(debug=True, port=5001)

@@ -1,68 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Smart Resume Analyzer</title>
 
     <link rel="preconnect"
           href="https://fonts.googleapis.com">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
 
     <link rel="stylesheet"
-          href="{{ url_for('static',
-          filename='style.css') }}">
+          href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
 <body>
 
-    <div class="background-circle one"></div>
-    <div class="background-circle two"></div>
+<div class="container">
 
-    <div class="container">
+    <h1>📄 Smart Resume Analyzer</h1>
 
-        <div class="hero">
+    <p class="subtitle">
+        Upload your resume and compare it with a Job Description.
+    </p>
 
-            <h1> AI Resume Analyzer</h1>
+    <form action="/analyze"
+          method="POST"
+          enctype="multipart/form-data">
 
-            <p>
-                Optimize your resume for ATS systems and compare it with job descriptions.
-            </p>
+        <label>
+            Upload Resume
+        </label>
 
-        </div>
+        <input
+            type="file"
+            name="resume"
+            accept=".pdf"
+            required>
 
-        <form action="/analyze"
-              method="POST"
-              enctype="multipart/form-data">
+        <label>
+            Job Description
+        </label>
 
-            <div class="upload-box">
+        <textarea
+            name="job_description"
+            placeholder="Paste the Job Description here..."
+            required></textarea>
 
-                <label>Upload Resume</label>
+        <button type="submit">
 
-                <input
-                    type="file"
-                    name="resume"
-                    required>
+            🚀 Analyze Resume
 
-            </div>
+        </button>
 
-            <label>Job Description</label>
+    </form>
 
-            <textarea
-                name="job_description"
-                placeholder="Paste Job Description Here..."
-                required>
-            </textarea>
-
-            <button>
-                Analyze Resume
-            </button>
-
-        </form>
-
-    </div>
+</div>
 
 </body>
+
 </html>

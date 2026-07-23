@@ -1,19 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-    <title>Analysis Result</title>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Resume Analysis Report</title>
 
     <link rel="preconnect"
           href="https://fonts.googleapis.com">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
 
     <link rel="stylesheet"
-          href="{{ url_for('static',
-          filename='style.css') }}">
+          href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
@@ -21,15 +29,15 @@
 
 <div class="container">
 
-    <h1>📊 Resume Analysis Result</h1>
+    <h1>📊 Resume Analysis Report</h1>
 
-    <p>
-        Here is your ATS compatibility score.
+    <p class="subtitle">
+        Here is your resume analysis.
     </p>
 
     <div class="card">
 
-        <h2>ATS Score</h2>
+        <h2>ATS Compatibility Score</h2>
 
         <div class="circle">
 
@@ -44,46 +52,156 @@
         {% if score >= 80 %}
 
             <h3 class="good">
+
                 ✅ Excellent Match
+
             </h3>
 
             <p>
-                Your resume aligns very well with the job description.
+
+                Your resume matches the job description very well.
+
             </p>
 
         {% elif score >= 60 %}
 
             <h3 class="average">
+
                 ⚡ Good Match
+
             </h3>
 
             <p>
-                Your resume matches many requirements but can be improved.
+
+                Your resume satisfies many requirements but can be improved.
+
             </p>
 
         {% else %}
 
             <h3 class="bad">
+
                 ❌ Needs Improvement
+
             </h3>
 
             <p>
-                Consider adding more relevant skills and keywords.
+
+                Add more relevant keywords and skills.
+
             </p>
 
         {% endif %}
 
-        <a href="/">
+    </div>
 
-            <button class="back-btn">
+    <div class="card">
 
-                Analyze Another Resume
+        <h2>Candidate Information</h2>
 
-            </button>
+        <div class="info">
 
-        </a>
+            <p>
+
+                <strong>👤 Name</strong><br>
+
+                {{ candidate_info.name }}
+
+            </p>
+
+            <p>
+
+                <strong>📧 Email</strong><br>
+
+                {{ candidate_info.email }}
+
+            </p>
+
+            <p>
+
+                <strong>📱 Phone</strong><br>
+
+                {{ candidate_info.phone }}
+
+            </p>
+
+            <p>
+
+                <strong>💼 LinkedIn</strong><br>
+
+                {{ candidate_info.linkedin }}
+
+            </p>
+
+            <p>
+
+                <strong>💻 GitHub</strong><br>
+
+                {% if candidate_info.github %}
+
+                    {{ candidate_info.github }}
+
+                {% else %}
+
+                    Not Available
+
+                {% endif %}
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+    <h2>🛠Resume Skills</h2>
+
+    <div class="skills">
+
+        {% for skill in resume_skills %}
+
+            <span class="skill">
+
+                {{ skill }}
+
+            </span>
+
+        {% endfor %}
 
     </div>
+
+</div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Resume Suggestions</h2>
+
+        <ul class="tips">
+
+            <li>Add more keywords from the job description.</li>
+
+            <li>Highlight technical skills clearly.</li>
+
+            <li>Add measurable achievements.</li>
+
+            <li>Keep the resume ATS-friendly.</li>
+
+            <li>Mention certifications and projects.</li>
+
+        </ul>
+
+    </div>
+
+    <a href="/">
+
+        <button class="back-btn">
+
+            🔄 Analyze Another Resume
+
+        </button>
+
+    </a>
 
 </div>
 
