@@ -6,6 +6,7 @@ from utils.nlp_utils import preprocess
 from utils.scorer import calculate_score
 from utils.info_extractor import extract_info
 from utils.skill_extractor import extract_skills
+from utils.database import save_analysis
 
 app = Flask(__name__)
 
@@ -53,6 +54,13 @@ def analyze():
     score = calculate_score(
         clean_resume,
         clean_job
+    )
+
+    save_analysis(
+    candidate_info,
+    score,
+    resume_skills,
+    job_skills
     )
 
     return render_template(
