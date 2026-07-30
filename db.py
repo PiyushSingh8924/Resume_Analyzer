@@ -1,14 +1,18 @@
+import os
 import mysql.connector
+from dotenv import load_dotenv
+
+load_dotenv()
 
 try:
     connection = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="P!yu5h@9780",
-        database="resume_analyzer"
+        host=os.getenv("DB_HOST"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        database=os.getenv("DB_NAME")
     )
 
-    print("✅Connected to MySQL successfully!")
+    print("Connected to MySQL successfully!")
 
 except mysql.connector.Error as err:
     print("Connection Error:", err)
