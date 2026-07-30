@@ -169,6 +169,39 @@
 
     </div>
 
+    <div class="card">
+
+    <h2>✅ Matched Skills</h2>
+
+    {% for skill in matched_skills %}
+
+        <span class="skill">
+
+            {{ skill }}
+
+        </span>
+
+    {% endfor %}
+
+</div>
+
+
+<div class="card">
+
+    <h2>❌ Missing Skills</h2>
+
+    {% for skill in missing_skills %}
+
+        <span class="missing">
+
+            {{ skill }}
+
+        </span>
+
+    {% endfor %}
+
+</div>
+
 </div>
 
     </div>

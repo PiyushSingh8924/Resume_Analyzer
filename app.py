@@ -51,26 +51,35 @@ def analyze():
     clean_resume = preprocess(text)
     clean_job = preprocess(job_description)
 
-    score = calculate_score(
-        clean_resume,
-        clean_job
-    )
-
-    save_analysis(
-    candidate_info,
-    score,
+    score, matched_skills = calculate_score(
+    clean_resume,
+    clean_job,
     resume_skills,
     job_skills
     )
 
-    return render_template(
-        "result.html",
-        score=score,
-        candidate_info=candidate_info,
-        resume_skills=resume_skills,
-        job_skills=job_skills
+    save_analysis(
+        candidate_info,
+        score,
+        resume_skills,
+        job_skills
     )
 
+    missing_skills = list(
+    set(job_skills)
+    -
+    set(resume_skills)
+    )
+
+    return render_template(
+    "result.html",
+    score=score,
+    candidate_info=candidate_info,
+    resume_skills=resume_skills,
+    job_skills=job_skills,
+    matched_skills=matched_skills,
+    missing_skills=missing_skills
+)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)

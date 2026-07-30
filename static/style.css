@@ -389,3 +389,36 @@ button:hover{
 
     font-size:15px;
 }
+.skill{
+
+    display:inline-block;
+
+    margin:8px;
+
+    padding:10px 18px;
+
+    background:#22c55e;
+
+    color:white;
+
+    border-radius:20px;
+
+    font-weight:600;
+}
+
+.missing{
+
+    display:inline-block;
+
+    margin:8px;
+
+    padding:10px 18px;
+
+    background:#ef4444;
+
+    color:white;
+
+    border-radius:20px;
+
+    font-weight:600;
+}
