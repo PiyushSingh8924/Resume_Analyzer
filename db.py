@@ -1,18 +1,9 @@
-import os
-import mysql.connector
-from dotenv import load_dotenv
+from pymongo import MongoClient
 
-load_dotenv()
+client = MongoClient("mongodb://localhost:27017/")
 
-try:
-    connection = mysql.connector.connect(
-        host=os.getenv("DB_HOST"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME")
-    )
+db = client["resume_analyzer"]
 
-    print("Connected to MySQL successfully!")
+collection = db["resume_analysis"]
 
-except mysql.connector.Error as err:
-    print("Connection Error:", err)
+print("✅ Connected to MongoDB successfully!")

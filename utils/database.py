@@ -1,34 +1,17 @@
-from db import connection
+from db import collection
 
-cursor = connection.cursor()
 
 def save_analysis(candidate_info, score, resume_skills, job_skills):
 
-    query = """
-    INSERT INTO resume_analysis
-    (
-        candidate_name,
-        email,
-        phone,
-        linkedin,
-        github,
-        ats_score,
-        resume_skills,
-        job_skills
-    )
-    VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
-    """
+    document = {
+        "candidate_name": candidate_info["name"],
+        "email": candidate_info["email"],
+        "phone": candidate_info["phone"],
+        "linkedin": candidate_info["linkedin"],
+        "github": candidate_info["github"],
+        "ats_score": score,
+        "resume_skills": resume_skills,
+        "job_skills": job_skills
+    }
 
-    values = (
-        candidate_info["name"],
-        candidate_info["email"],
-        candidate_info["phone"],
-        candidate_info["linkedin"],
-        candidate_info["github"],
-        score,
-        ", ".join(resume_skills),
-        ", ".join(job_skills)
-    )
-
-    cursor.execute(query, values)
-    connection.commit()
+    collection.insert_one(document)
