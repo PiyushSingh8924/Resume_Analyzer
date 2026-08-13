@@ -53,7 +53,6 @@ def analyze():
 
     score, matched_skills = calculate_score(
     clean_resume,
-    clean_job,
     resume_skills,
     job_skills
     )
